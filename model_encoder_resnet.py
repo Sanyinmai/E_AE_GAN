@@ -5,7 +5,7 @@ import torch.nn as nn
 from torch import Tensor
 from torchvision.models.resnet import BasicBlock
 
-#改变通道数量 不改变特征寸尺
+#改变通道数量 不改变特征尺寸
 def conv3x3(in_planes: int, out_planes: int, stride: int = 1, groups: int = 1, dilation: int = 1) -> nn.Conv2d:
     """3x3 convolution with padding"""
     return nn.Conv2d(
@@ -96,8 +96,6 @@ class ResNet_Encoder(nn.Module):
         self.inplanes = 32
         self.dilation = 1
         if replace_stride_with_dilation is None:
-            # each element in the tuple indicates if we should replace
-            # the 2x2 stride with a dilated convolution instead
             replace_stride_with_dilation = [False, False, False]
         if len(replace_stride_with_dilation) != 3:
             raise ValueError(
