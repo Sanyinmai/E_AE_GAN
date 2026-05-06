@@ -65,13 +65,13 @@ class Encoder(nn.Module):
             layers.append(block(self.inplanes, planes))
         return nn.Sequential(*layers)
 
-    def forward(self, x):  # x 1 × 256 × 256
-        x = self.conv1(x)  # 32 × 128 × 128
+    def forward(self, x):
+        x = self.conv1(x) 
         x = self.bn1(x)
-        x = self.relu(x)  # 32 × 128 × 128
-        x = self.maxpool(x)   # 32 × 64 × 64
-        x1 = self.layer1(x)   # 64 × 64 × 64
-        x2 = self.layer2(x1)  # 128 × 32 × 32
-        x3 = self.layer3(x2)  # 256 × 16 × 16
-        x4 = self.layer4(x3)  # 512 × 8 × 8
+        x = self.relu(x)  
+        x = self.maxpool(x)  
+        x1 = self.layer1(x)   
+        x2 = self.layer2(x1)  
+        x3 = self.layer3(x2)  
+        x4 = self.layer4(x3)  
         return x4
