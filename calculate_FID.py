@@ -5,7 +5,7 @@ from pytorch_fid import fid_score
 import os
 
 def Calculate_FID(real_images_path, generated_images_path, device):
-    #计算FID值
+    
     fid_value = fid_score.calculate_fid_given_paths([real_images_path, generated_images_path], batch_size=50, device=device, dims=2048)
     return fid_value
 
