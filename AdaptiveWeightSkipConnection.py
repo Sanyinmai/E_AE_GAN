@@ -1,7 +1,6 @@
 import torch
 import torch.nn as nn
 
-#训练时使用该加权融合连接
 class AdaptiveWeightedSkipConnection(nn.Module):
     def __init__(self, in_channels):
         super(AdaptiveWeightedSkipConnection, self).__init__()
@@ -16,7 +15,6 @@ class AdaptiveWeightedSkipConnection(nn.Module):
         fused_features = adaptive_weight * memory_output + (1 - adaptive_weight) * original_features
         return fused_features
 
-#测试时使用该加权融合连接
 class AdaptiveWeightedSkipConnection_Test(nn.Module):
     def __init__(self, in_channels):
         super(AdaptiveWeightedSkipConnection_Test, self).__init__()
